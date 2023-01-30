@@ -5,6 +5,7 @@ class Input(pygame.sprite.Sprite):
     def __init__(self, dicionario_de_arquivos):
         # Construtor da classe mãe (Sprite).
         pygame.sprite.Sprite.__init__(self)
+        self.palavra = ''
         for i in range(2):
             self.palavra += str(random.randint(0, 9))
 

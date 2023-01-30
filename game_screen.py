@@ -30,7 +30,8 @@ def game_screen(window):
         # ----- Gera saídas
         window.fill(BLACK)  # Preenche com a cor branca
         lista_imagem.draw(window)
-
+        text = dicionario_de_arquivos['font'].render(input.palavra, True, (0, 0, 0))
+        window.blit(text, (410, 260))
         pygame.display.update()  # Mostra o novo frame para o jogador
 
     return state
