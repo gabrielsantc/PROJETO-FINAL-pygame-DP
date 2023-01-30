@@ -1,10 +1,12 @@
 import pygame
 from config import WIDTH, HEIGHT
+import random
 class Input(pygame.sprite.Sprite):
     def __init__(self, dicionario_de_arquivos):
         # Construtor da classe mãe (Sprite).
         pygame.sprite.Sprite.__init__(self)
-
+        for i in range(2):
+            self.palavra += str(random.randint(0, 9))
 
         self.image = dicionario_de_arquivos['input'] # carrega imagem
         #todo objeto precisa de um rect
