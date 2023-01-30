@@ -34,11 +34,16 @@ def game_screen(window):
         # ----- Gera saídas
         window.fill(BLACK)  # Preenche com a cor branca
         lista_imagem.draw(window)
-        text = dicionario_de_arquivos['font2'].render(input.palavra, True, (0, 0, 0))
+        num = dicionario_de_arquivos['font2'].render(input.palavra, True, (0, 0, 0))
         timer = dicionario_de_arquivos['font'].render(str(cont), True, (255, 255, 255))
-        window.blit(timer, (10, 10))
+        texto = dicionario_de_arquivos['font_media'].render(input.memorize, True, (255, 255, 255))
+        dig = dicionario_de_arquivos['font_media'].render(input.digite, True, (255, 255, 255))
+        window.blit(timer, (860, 10))
         if MEMORIZE == True:
-            window.blit(text, (410, 260))
+            window.blit(num, (410, 260))
+            window.blit(texto, (280, 180))
+        if MEMORIZE == False:
+            window.blit(dig, (280, 180))
         agora = pygame.time.get_ticks()
         if MEMORIZE == True and agora - ultima_vez > 3000:
             MEMORIZE = False
@@ -47,5 +52,5 @@ def game_screen(window):
             MEMORIZE = True
             ultima_vez = agora
         pygame.display.update()  # Mostra o novo frame para o jogador
-
+        
     return state

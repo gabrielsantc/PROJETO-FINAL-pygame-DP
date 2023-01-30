@@ -8,8 +8,8 @@ class Input(pygame.sprite.Sprite):
         self.palavra = ''
         for i in range(2):
             self.palavra += str(random.randint(0, 9))
-
         self.memorize = 'MEMORIZE...'
+        self.digite = 'DIGITE...'
         self.image = dicionario_de_arquivos['input'] # carrega imagem
         #todo objeto precisa de um rect
         # rect é a representação de retangulo feita pelo pygame
