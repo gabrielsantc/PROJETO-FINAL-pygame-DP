@@ -21,11 +21,12 @@ def game_screen(window):
         clock.tick(FPS)
         segundos = int((pygame.time.get_ticks() - last_update)/1000)
         cont = 40 - segundos
-        print(cont)
 
 
         # ----- Trata eventos
-        for event in pygame.event.get():
+        for event in pygame.event.get(): 
+            if event.type == pygame.KEYUP:
+                print(event.unicode)   
             # ----- Verifica consequências
             if event.type == pygame.QUIT:
                 state = DONE
