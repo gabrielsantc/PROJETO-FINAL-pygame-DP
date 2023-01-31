@@ -28,8 +28,7 @@ def game_screen(window):
         # ----- Trata eventos
         for event in pygame.event.get(): 
             if event.type == pygame.KEYUP:
-                evento += event.unicode
-                print(evento)   
+                evento += event.unicode  
             # ----- Verifica consequências
             if event.type == pygame.QUIT:
                 state = DONE
@@ -60,10 +59,8 @@ def game_screen(window):
         if MEMORIZE == False and agora - ultima_vez > 5000:
             if evento != input.palavra:
                 input.vida -= 1
-                print('diferente')
             if evento == input.palavra:
                 input.vida = input.vida
-                print('igual')
             input.palavra = ''
             for i in range(qtd):
                 input.palavra += str(random.randint(0, 9))
