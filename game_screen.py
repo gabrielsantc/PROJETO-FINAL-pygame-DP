@@ -2,6 +2,7 @@ import pygame
 from config import FPS, WIDTH, HEIGHT, BLACK
 from assets import carrega_arquivos
 from sprites import Input
+import random
 def game_screen(window):
     # Variável para o ajuste de velocidade
     clock = pygame.time.Clock()
@@ -16,6 +17,7 @@ def game_screen(window):
     state = PLAYING
     last_update = pygame.time.get_ticks()
     ultima_vez = pygame.time.get_ticks()
+    qtd = 3
     # ===== Loop principal =====
     while state != DONE:
         clock.tick(FPS)
@@ -52,13 +54,25 @@ def game_screen(window):
             window.blit(rend_event, (410, 350))
         agora = pygame.time.get_ticks()
         if MEMORIZE == True and agora - ultima_vez > 3000:
+
             MEMORIZE = False
             ultima_vez = agora
         if MEMORIZE == False and agora - ultima_vez > 5000:
             if evento != input.palavra:
                 input.vida -= 1
+                print('diferente')
+            if evento == input.palavra:
+                input.vida = input.vida
+                print('igual')
+            input.palavra = ''
+            for i in range(qtd):
+                input.palavra += str(random.randint(0, 9))
+            qtd+=1
+            evento = ''
             MEMORIZE = True
             ultima_vez = agora
         pygame.display.update()  # Mostra o novo frame para o jogador
+        if input.vida == 0:
+            state = DONE
         
     return state
